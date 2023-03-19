@@ -6,23 +6,26 @@
 {% include "components/splash.html" %}
 <div class="container">
     <div class="row">
-        <div class="col-12 col-lg-8">
-            {% for post in posts %}
-                {{post.title}}
-            {% endfor %}
-        </div>
-        <div class="d-non d-lg-block col-4">
-            {{message}}
-            sdafd
+        <div>
             {% for message in messages %}
-                {{message}}
+                <div class = "messages">
+                    <li class="list-inline p-3"><span>Anon:</span> {{message.content}}</li>
+                </div>
             {% endfor %}
         </div>
-        <form method="post" action="{% url 'send_message'%}">
-            {% csrf_token %}
-            <input type="text" name="content">
-            <button type="submit">Send</button>
-        </form>
+        <div class="form-container">
+            <div class="form-wrapper">
+                <form method="post" action="{% url 'send_message'%}">
+                    {% csrf_token %}
+                        <div class="form-row">
+                        <input type="text" name="content">
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
+{% include "base/footer.html" %}
 {% endblock %}

@@ -22,6 +22,6 @@ class Post(models.Model):
 
 class Message(models.Model):
     content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.content
