@@ -11,7 +11,18 @@
                 {{post.title}}
             {% endfor %}
         </div>
-        <div class="d-non d-lg-block col-4">b</div>
+        <div class="d-non d-lg-block col-4">
+            {{message}}
+            sdafd
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        </div>
+        <form method="post" action="{% url 'send_message'%}">
+            {% csrf_token %}
+            <input type="text" name="content">
+            <button type="submit">Send</button>
+        </form>
     </div>
 </div>
 {% endblock %}

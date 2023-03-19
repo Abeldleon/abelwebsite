@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Post(models.Model):
 
@@ -19,6 +20,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
-    
-# Create your models here.
+class Message(models.Model):
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.content
