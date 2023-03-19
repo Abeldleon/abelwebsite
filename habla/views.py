@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import Post, Message
+from django.http import FileResponse
+from django.conf import settings
+import os
 
 # Create your views here.
 

@@ -1,0 +1,87 @@
+{% load static %}
+<div id="container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/controls/OrbitControls.js"></script>
+
+
+  <script>
+
+
+    var scene = new THREE.Scene();
+
+    scene.background = new THREE.Color(0xffffff);
+
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
+    camera.position.set(40,20,40);
+    camera.lookAt(new THREE.Vector3(0,0,0));
+
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.soft = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    
+    document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
+    scene.add( ambientLight );
+
+    var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    directionalLight.position.set(20, 30, 40 );
+    //directionalLight.target.position.set(0,0,0);
+
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
+
+
+
+    scene.add( directionalLight );
+    var loader = new THREE.GLTFLoader();
+
+    const axesHelper = new THREE.AxesHelper( 5 );
+    scene.add( axesHelper );
+    var geometry = new THREE.PlaneGeometry(40, 40 , 32)
+    var material = new THREE.MeshStandardMaterial({
+        color: 0xc7b8a9, 
+        side: THREE.DoubleSide,
+        roughness: 0.98
+        //metalness: 0 //add comma to continue
+        //roughnessMap: roughnessMap,
+        //metalNessMap: metalnessMap,
+        //envMap: envMap,
+        //envMapIntensity: envMapIntensity
+    });
+    var plane = new THREE.Mesh(geometry, material);
+    plane.rotation.x = -90 * (Math.PI/180);
+    plane.receiveShadow = true;
+    scene.add(plane);
+
+
+
+    loader.load( '/static/wall.gltf', function ( gltf ) {
+      gltf.scene.traverse(function(child){
+        if(child.isMesh){
+          child.castShadow = true;
+          child.position.set(20,1,0);
+          child.receiveShadow = true;
+        }
+      })
+
+    scene.add( gltf.scene );
+    }, undefined, function ( error ) {
+      console.error( error );
+    } );
+
+    function animate() {
+      controls.update();
+      requestAnimationFrame( animate );
+      renderer.render( scene, camera );
+    }
+    animate();
+</script>
