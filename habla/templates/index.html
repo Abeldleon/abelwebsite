@@ -31,18 +31,23 @@
     </div>
 </div>
 
-<div id="projects">
-    <div class="a-project">
-        <a class="prolinks1"href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
-    </div>
-    <div class="a-project">
-        <a class="prolinks2" href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
+<div id="projects-wrapper">
+    <div id="h1-projects-container">
+        <h1 class="h1projects"> Projects </h1>
+        <div id="projects">
+            <div class="a-project">
+                <a class="prolinks1"href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
+            </div>
+            <div class="a-project">
+                <a class="prolinks2" href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
     const button = document.getElementById('port');
-    const div = document.getElementById('projects');
+    const div = document.getElementById('projects-wrapper');
     
     button.addEventListener('click', () => {
       div.scrollIntoView({ behavior: 'smooth' });

@@ -1,8 +1,14 @@
-body{
-    background-color:white;
+
+/* Apply the background */
+body {
+  background-image: url('../noise.svg');
+  background-color: #f9e4cb;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .messages{
-    background-color: rgb(249, 228, 203);
+    background-color: rgb(255, 189, 107);
     margin:0.5em;
     border-radius: 3em;
 }
@@ -42,42 +48,58 @@ body{
    height: auto;
    width: 80%; 
   }
+#h1-projects-container
+{
+  margin: 2em;
+  background-color: #fff397;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.h1projects{
+  text-align: center;
+}
+
+#projects-wrapper{
+  background-size: 100% auto;
+  
+}
   #projects{
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
     align-items: center;
     margin-bottom: 10em;
+
   }
   .a-project{
-    margin: 4em;
-    background-color: rgb(28, 221, 221);
+    margin: 2em;
   }
-  .prolinks1{
-    background-image: url("../hash_tree.png");
+  .a-project > a{ 
+  
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
-    padding: 5em 12em;
-    border-radius: 8px;
+    padding: 5em ;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     font-size:1.2em;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
     color: #ffffff;
-    background-color: #007aff;
+    transition: all 0.3s ease-in-out;
   }
-  .prolinks2{
-    display: inline-block;
-    padding: 5em 12em;
-    border-radius: 8px;
-    font-size:1.2em;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #007aff;
+  .prolinks1{
+    background-image: url("../hash_tree.png");
   }
+  .prolinks2:hover {
+    transform: scale(1.1);
+  }
+  .prolinks1:hover{
+    transform: scale(1.1);
+  }
+  .prolinks2 {
+    background-image: url("../Capture-min.webp");
+  }
+  
 /*///////footer//////*/
   footer {
     background-color: #181818;
@@ -127,11 +149,10 @@ body{
   
   
 
-
-  
-  .fa {
-    display: inline-block;
-    font-size: inherit;
-    vertical-align: middle;
+  @media only screen and (max-width: 600px) {
+    .a-project > a {
+      font-size: 20px;
+      width: 300px;
+      padding: 10px;
+    }
   }
-  
