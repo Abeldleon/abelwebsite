@@ -37,7 +37,47 @@ body{
     font-size: 16px;
     cursor: pointer;
   }
-  
+
+  .wrapper-canvas{
+   height: auto;
+   width: 80%; 
+  }
+  #projects{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10em;
+  }
+  .a-project{
+    margin: 4em;
+    background-color: rgb(28, 221, 221);
+  }
+  .prolinks1{
+    background-image: url("../hash_tree.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    padding: 5em 12em;
+    border-radius: 8px;
+    font-size:1.2em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007aff;
+  }
+  .prolinks2{
+    display: inline-block;
+    padding: 5em 12em;
+    border-radius: 8px;
+    font-size:1.2em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007aff;
+  }
 /*///////footer//////*/
   footer {
     background-color: #181818;

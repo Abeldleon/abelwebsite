@@ -1,5 +1,7 @@
 {% load static %}
-<div id="container"></div>
+<div class="wrapper-canvas">
+<div id="container-canvas"></div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/controls/OrbitControls.js"></script>
@@ -13,7 +15,7 @@
     scene.background = new THREE.Color(0xffffff);
 
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
-    camera.position.set(40,20,40);
+    camera.position.set(-20,10, 20);
     camera.lookAt(new THREE.Vector3(0,0,0));
 
 
@@ -23,21 +25,36 @@
     renderer.shadowMap.soft = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     
-    document.getElementById( 'container' ).appendChild( renderer.domElement );
+    document.getElementById( 'container-canvas' ).appendChild( renderer.domElement );
 
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    controls.enableZoom = false;
+    controls.autoRotate = true;
+
 
     var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
     scene.add( ambientLight );
 
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-    directionalLight.position.set(20, 30, 40 );
+    directionalLight.position.set(-20, 30, 40 );
     //directionalLight.target.position.set(0,0,0);
 
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 1024;
     directionalLight.shadow.mapSize.height = 1024;
+
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 500;
+    directionalLight.shadow.camera.left = -50;
+    directionalLight.shadow.camera.right = 50;
+    directionalLight.shadow.camera.top = 50;
+    directionalLight.shadow.camera.bottom = -50;
+
+// Adjust the quality of the shadows
+directionalLight.shadow.bias = -0.002;
+directionalLight.shadow.radius = 1;
 
 
 
@@ -64,19 +81,27 @@
 
 
 
-    loader.load( '/static/wall.gltf', function ( gltf ) {
-      gltf.scene.traverse(function(child){
-        if(child.isMesh){
-          child.castShadow = true;
-          child.position.set(20,1,0);
-          child.receiveShadow = true;
-        }
-      })
+  
 
-    scene.add( gltf.scene );
-    }, undefined, function ( error ) {
-      console.error( error );
-    } );
+const loader3 = new THREE.GLTFLoader();
+
+
+loader3.load('/static/models/portfolio.gltf', (gltf) => {
+
+
+  gltf.scene.traverse(function(child){
+    if(child.isMesh){
+      //child.position.set(0,0,0);
+      child.receiveShadow = true;
+      child.castShadow = true;
+    }
+  })
+
+  scene.add(gltf.scene)
+
+
+
+});
 
     function animate() {
       controls.update();
