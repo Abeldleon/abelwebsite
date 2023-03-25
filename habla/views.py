@@ -31,7 +31,7 @@ def efaistuff(request):
     if response.status_code == 200:
         weather_data = response.json()
         weatherCode = weather_data['data']['timelines'][0]['intervals'][0]['values']['weatherCode']
-        with open('static/data/weather_codes.json') as f:
+        with open('/static/data/weather_codes.json') as f:
             weather_code_list = json.load(f)
         weatherIcon = weather_code_list[str(weatherCode)]+".svg"
 
