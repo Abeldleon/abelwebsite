@@ -72,3 +72,6 @@ def send_message(request):
         message = Message.objects.create(content=request.POST['content'])
         message.save()
     return redirect('home')
+
+def resume(request):
+    return render(request,'resume.html')

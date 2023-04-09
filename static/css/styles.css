@@ -5,12 +5,90 @@ body {
   background-color: #f9e4cb;
   background-repeat: no-repeat;
   background-size: cover;
+  margin: 0;
+}
+/*//////general////*/
+.main-content{
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 30px;
+}
+/*///////navbar///////*/
+.my-navbar{
+  background-color: white;
+}
+.nav-items{
+  display:grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 70px;
+  max-width: 50%;
+  
+}
+.nav-link{
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace;
+  color: #000000; /* set the color of the links */
+  text-align: center; /* center the text within the links */
+  padding: 14px 16px; /* add padding to the links */
+  text-decoration: none; /* remove the underline from the links */
+  font-weight: bold; 
+}
+.nav-link:hover{
+  background-color: #ddd; /* set the background color of the links when hovered */
+  color: #333;
+}
+.navbar-brand{
+  font-size: 2em;
+  text-decoration: none;
+  color:rgb(9, 59, 26);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+
 }
 
+/*/////splash///////*/
+.round-black-btn{
+  background-color: black;
+  color: white;
+  border-radius: 5em;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+}
+.splash-title{
+  font-size: 72px; /* adjust to your desired size */
+  font-weight: 100;
+  letter-spacing: 2px; /* adjust to your desired thinness */
+  font-family: sans-serif; 
+}
+.sub-title{
+  font-size: 18px;
+  font-family: sans-serif; 
+  color: gray;
+}
+
+
+/*////////messages////*/
+.chat{
+  display: grid;
+  grid-auto-flow: row;
+}
 .messages{
     background-color: rgb(255, 189, 107);
-    margin:0.5em;
     border-radius: 3em;
+    margin: 20px 0
+}
+.comment{
+  padding: 1em;
+  font-size: 24px;
+  font-family:Arial, Helvetica, sans-serif;
 }
 .form-container{
     padding:3em;
@@ -50,7 +128,6 @@ body {
   }
 #h1-projects-container
 {
-  margin: 2em;
   background-color: #fff397;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
@@ -99,7 +176,10 @@ body {
   .prolinks2 {
     background-image: url("../Capture-min.webp");
   }
-  
+
+
+
+
 /*///////footer//////*/
   footer {
     background-color: #181818;
@@ -147,7 +227,27 @@ body {
     margin: 0;
   }
   
-  
+  .widget {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 1.0rem;
+    margin-bottom: 1.0rem;
+    display: grid;
+    justify-items: center;
+}
+
+.widgets-container {
+    display: grid;
+    grid-template: 1fr / repeat(2, 1fr);
+    grid-gap: 1.0rem;
+    padding: 1.0rem;
+}
+
+.weather_icon {
+    width: 50px;
+    height: 50px;
+}
 
   @media only screen and (max-width: 600px) {
     .a-project > a {

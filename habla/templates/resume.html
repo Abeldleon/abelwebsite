@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resume</title>
+    <link rel="stylesheet", href="{% static 'css/resume.css'%}">
+  </head>
+  
+  <body>
+    <div class="resume-wrapper">
+        <div class="details">
+            <div class="profile">
+                <div class="img-wrapper">
+                    <div class="icon"></div>
+                </div>
+            </div>
+            
+            <div class="ds-content contact">
+                <h2 class="h2-ds-contact">CONTACT</h2>
+                <ul class="timeline">
+                    <li>Abel De Leon</li>
+                    <li>abelefai@gmail.com</li>
+                    <li>(310)-658-7946</li>
+                    <li>711 West Beach Avenue Inglewood CA</li>
+                </ul>
+            </div>
+            <div class="ds-content interests">
+                <h2 class="h2-ds-interest">INTERESTS</h2>
+                <ul class="timeline">
+                    <li>Photgraphy</li>
+                    <li>3D Modeling</li>
+                    <li>Film</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <header class="header">
+                <h1>ABEL DE LEON</h1>
+            </header>
+
+            <section class="section-content">
+            <h2>ABOUT ME</h2>
+            <p>
+            Hello, my name is Abel De Leon and I'm a computer science student at El Camino College. I'm passionate about programming and designing applications. In my spare time, I enjoy color grading pictures I've taken with my camera and watching documentaries. I'm a productive team member and enjoy collaborating with others.
+            </p>
+            </section>
+            
+            <section class="section-content">
+                <h2>EDUCATION</h2>
+                <ul class="h-timeline">
+                    <li>
+                      <div class="h-timeline-content">
+                        <h2>Animo Inglewood Charter HS</h2>
+                        <span class="date">2016</span>
+                        <p>Graduated</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="h-timeline-content">
+                        <h2>El Camino Community College</h2>
+                        <span class="date">2023</span>
+                        <p>Will Graduate</p>
+                      </div>
+                    </li>
+
+                  </ul>
+                  
+                  
+            </section>
+            
+            <section class="section-content">
+            <h2>SKILLS & EXPERTISE</h2>
+                <div class="skill">
+                    <h3 class="skill-title">C++</h3>
+                    <progress class="prog-bar" value="65" max="100"></progress>
+                </div>
+                <div class="skill"> 
+                    <h3 class="skill-title">Javascript</h3>
+                    <progress class="prog-bar" value="40" max="100"></progress>
+                </div>
+                <div class="skill">
+                    <h3 class="skill-title">Python</h3>
+                    <progress class="prog-bar" value="40" max="100"></progress>
+                </div>
+                <div class="skill">
+                    <h3 class="skill-title">JAVA</h3>
+                    <progress class="prog-bar" value="50" max="100"></progress>
+                </div>
+            </ul>
+            </section>
+        </div>
+        <div class="tab">
+            <div class="yellow-tab">
+            </div>
+        </div>
+    </div>
+  </body>
+  <script>
+    let sections = document.querySelectorAll('section');
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#f2f2f2';
+        });
+        sections[i].addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#fff';
+        });
+    }
+  </script>
+</html>
