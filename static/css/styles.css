@@ -67,6 +67,7 @@ body {
   position: relative;
   width: 10em;
   backdrop-filter: blur(2em);
+  -webkit-backdrop-filter: blur(2em);
   top: -4em;
   box-shadow: 0em 0em 4em 0em rgba(0, 0, 0, 0.268);
 }
@@ -150,6 +151,7 @@ body {
   font-family: sans-serif; 
   color: rgb(255, 255, 255);
   mix-blend-mode: overlay;
+  -webkit-mix-blend-mode: overlay;
 }
 .profile-container{
   font-size: 20px;
@@ -351,6 +353,7 @@ button[type="submit"] {
   top: 2em;
   z-index: 0;
   mix-blend-mode: difference;
+  -webkit-mix-blend-mode: difference;
 }
 .proj-name{
   margin: 0;
@@ -359,6 +362,7 @@ button[type="submit"] {
   text-align: center;
   font-family: sans-serif;
   mix-blend-mode: difference;
+  -webkit-mix-blend-mode: difference;
   color:  #711919;
 }
 
