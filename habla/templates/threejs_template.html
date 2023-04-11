@@ -1,26 +1,87 @@
 {% load static %}
-<div class="wrapper-canvas">
+<div id="wrapper-canvas">
 <div id="container-canvas"></div>
+  <div class="menu-container">
+    <div class="menu-wrapper">
+      <div class="menu">
+        <h1>Student at El Camino College</h1>
+
+        <ul class="skills-list">
+          <li>
+            <p>C++</p>
+            <progress class="prog-bar" value="65" max="100"></progress>
+          </li>
+          <li>
+            <p>HTML</p>
+            <progress class="prog-bar" value="49" max="100"></progress>
+          </li>
+          <li>
+            <p>CSS</p>
+            <progress class="prog-bar" value="40" max="100"></progress>
+          </li>
+          <li>
+            <p>DJANGO</p>
+            <progress class="prog-bar" value="60" max="100"></progress>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/controls/OrbitControls.js"></script>
-
-
-  <script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/loaders/RGBELoader.js"></script>
+    <script>
 
 
     var scene = new THREE.Scene();
+    //scene.background = new THREE.Color(0xf9e4cb);
+    //scene.background = new THREE.Color(0x66b9ff);
+    //var bgTexture = new THREE.TextureLoader().load('/static/noise.jpg');
 
-    scene.background = new THREE.Color(0xf9e4cb);
+    //scene.background = bgTexture;
+    //scene.environment = bgTexture;
 
-    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100000 );
-    camera.position.set(-30,10, 0);
+
+
+
+
+////////////////////
+
+    const div = document.getElementById("container-canvas");
+    let width = div.clientWidth -17;
+    let height = div.clientWidth/1.8;
+
+
+
+
+
+    var camera = new THREE.PerspectiveCamera( 50, width / height, 0.1, 100000 );
+    camera.position.set(-45,10, 0);
     camera.lookAt(new THREE.Vector3(0,0,0));
 
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    var renderer = new THREE.WebGLRenderer({alpha:true});
+    
+    window.addEventListener('resize',()=>{
+      const div = document.getElementById("wrapper-canvas");
+      let width = div.clientWidth -17;
+      let height = div.clientWidth/1.8;
+      renderer.setSize(width,height );
+    });
+
+    renderer.setSize(width,height );
+
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.4;
+    renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.soft = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -35,13 +96,21 @@
     controls.autoRotateSpeed *= -1;
 
 
-    var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
-    scene.add( ambientLight );
 
-    var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+
+    new THREE.RGBELoader().load('/static/lauter_waterfall_1k.hdr',function(texture){
+      texture.mapping = THREE.EquirectangularReflectionMapping;
+      scene.background = null;
+      scene.environment = texture;
+    });
+
+
+ 
+
+
+    var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.4 );
     directionalLight.position.set(-20, 30, 40 );
     //directionalLight.target.position.set(0,0,0);
-
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 1024;
     directionalLight.shadow.mapSize.height = 1024;
@@ -57,13 +126,31 @@
 directionalLight.shadow.bias = -0.002;
 directionalLight.shadow.radius = 1;
 
-
-
     scene.add( directionalLight );
-    var loader = new THREE.GLTFLoader();
 
-    const axesHelper = new THREE.AxesHelper( 5 );
-    scene.add( axesHelper );
+
+
+    var directionalLight2 = new THREE.DirectionalLight( 0xffffff, 0.2 );
+    directionalLight2.position.set(20, 30, -40 );
+    directionalLight2.castShadow = true;
+    directionalLight2.shadow.mapSize.width = 1024;
+    directionalLight2.shadow.mapSize.height = 1024;
+    directionalLight2.shadow.camera.near = 0.5;
+    directionalLight2.shadow.camera.far = 500;
+    directionalLight2.shadow.camera.left = -50;
+    directionalLight2.shadow.camera.right = 50;
+    directionalLight2.shadow.camera.top = 50;
+    directionalLight2.shadow.camera.bottom = -50;
+    directionalLight2.shadow.bias = -0.002;
+    directionalLight2.shadow.radius = 1;
+
+    scene.add( directionalLight2 );
+
+
+
+
+    var loader = new THREE.GLTFLoader();
+;
     var geometry = new THREE.PlaneGeometry(40, 40 , 32)
     var material = new THREE.MeshStandardMaterial({
         color: 0xc7b8a9, 
@@ -104,10 +191,19 @@ loader3.load('/static/models/portfolio.gltf', (gltf) => {
 
 });
 
+
+
+
+
     function animate() {
       controls.update();
       requestAnimationFrame( animate );
       renderer.render( scene, camera );
+      //renderer.render();
     }
     animate();
+
+    //fghf
+
+
 </script>

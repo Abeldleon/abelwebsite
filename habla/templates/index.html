@@ -3,56 +3,80 @@
 
 {% block template %}
     {% include "base/navbar.html"%}
-    {% include "components/splash.html" %}
+    <div class="wrapper">
+        {% include "components/splash.html" %}
+        {% include "threejs_template.html" %}
+        <div class="main-content">
 
-    {% include "threejs_template.html" %}
 
-    <div class="main-content">
-        <div class="form-messages-container">
-            <div class="chat">
-                <div>
-                    {% for message in messages %}
-                        <div class = "messages">
-                            <div class="comment"><span>Anon:</span> {{message.content}}</div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="form-container">
-                    <div class="form-wrapper">
-                        <form method="post" action="{% url 'send_message'%}">
-                            {% csrf_token %}
-                                <div class="form-row">
-                                <input type="text" name="content">
-                                <button type="submit">Send</button>
+            <div class="projects-wrapper">
+                <div id="h1-projects-container">
+                    <div id="projects">
+                        <div class="a-project-container">
+                            <div class="white-border"></div>
+                            <div class="a-project">
+                                <a href="https://github.com/Abeldleon/MapBinaryTree/tree/main/MapBinaryTree" style="background-image: url('/static/hash_tree.png');">C++ Map using Hash and Binary Search Tree</a>
                             </div>
-                        </form>
+                        </div>
+                        <div class="a-project-container">
+                            <div class="white-border"></div>
+                            <div class="a-project">
+                                <a href="https://github.com/Abeldleon/abelwebsite" style="background-image: url('/static/site-min.webp');">This Website</a>
+                            </div>
+                        </div>
+                        <div class="a-project-container">
+                            <div class="white-border"></div>
+                            <div class="a-project">
+                                
+                                <a href="https://github.com/Abeldleon" style="background-image: url('/static/GitHub_logo.webp');"></a>
+                            </div>
+                        </div>
                     </div>
+                    <h1 class="proj-name">PROJECTS</h1>
                 </div>
-
             </div>
-        </div>
 
-        <div id="projects-wrapper">
-            <div id="h1-projects-container">
-                <h1 class="h1projects"> Projects </h1>
-                <div id="projects">
-                    <div class="a-project">
-                        <a class="prolinks1"href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
+            <div class="form-messages-container">
+                <div class="chat">
+                    <div class="message-container-wrapper">
+                        <div class="message-container">
+                            <div class="empty-5em"></div>
+                            {% for message in messages %}
+                                <div class = "messages">
+                                    <div class="comment"><span>Anon:</span> {{message.content}}</div>
+                                </div>
+                            {% endfor %}
+                            <div class="empty-5em"></div>
+                        </div>
                     </div>
-                    <div class="a-project">
-                        <a class="prolinks2" href="https://www.example.com">C++ Map using Hash and Binary Search Tree</a>
+
+                    <div class="form-container">
+                        <div class="form-wrapper">
+                            <form method="post" action="{% url 'send_message'%}">
+                                {% csrf_token %}
+                                    <div class="form-row">
+                                    <input type="text" name="content">
+                                    <button type="submit">Send</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+
+                    <h1 class="proj-name">Leave a message</h1>
                 </div>
             </div>
-        </div>
+
+
+
+        </div> 
     </div>
 
     <script>
         const button = document.getElementById('projs');
-        const div = document.getElementById('projects-wrapper');
+        const proCanvas = document.getElementById('wrapper-canvas');
         
         button.addEventListener('click', () => {
-        div.scrollIntoView({ behavior: 'smooth' });
+        proCanvas.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
     {% include "base/footer.html" %}

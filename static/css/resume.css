@@ -1,7 +1,10 @@
 /* Style the page */
+:root{
+    --primary-color: #fab30c;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0.5in auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
     padding: 0;
     width: 8.5in;
     height: 11in;
@@ -19,22 +22,26 @@ body {
     grid-auto-rows: auto;
     width: 3in;
     padding: 0.2in;
-
 }
+
 .header{
-    background-color: #fad20c;
+    background-color: var(--primary-color);
     height: 2in;
     width: 100%;
     text-align: center;
     margin-top: 0.5in;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .profile{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 3in;
     width: 3in;
-    background: linear-gradient(135deg, #fad20c 50%, #212123 50%);
+    background: linear-gradient(135deg, var(--primary-color) 50%, #212123 50%);
     margin: in;
     border-radius: 5%;
 }
@@ -50,7 +57,7 @@ body {
 }
 .icon{
     background-color: red;
-    background-image: url("../glassbg.jpg");
+    background-image: url("../me-bw.webp");
     width: 1.8in;
     height: 1.8in;
     border-radius: 5%;
@@ -64,7 +71,7 @@ body {
 .yellow-tab{
     width: 0.2in;
     height: 100%;
-    background-color: #fad20c;
+    background-color: var(--primary-color);
 }
 
 /* Style the content */
@@ -79,6 +86,11 @@ section {
 .section-content{
     padding: 0 0.3in;
 }
+.section-title{
+    background-color: #ebebeb;
+    margin: 0;
+    padding: 0.1in
+}
 .timeline {
     list-style: none;
     padding: 0;
@@ -87,7 +99,7 @@ section {
 .timeline li {
     position: relative;
     padding: 0.2in 40px;
-    border-left: 1px solid #fad20c;
+    border-left: 1px solid var(--primary-color);
   }
   
   .timeline li::before {
@@ -102,7 +114,7 @@ section {
     height: 11px; 
     border-radius: 50%;
    
-    background-color: #fad20c; 
+    background-color: var(--primary-color); 
   }
   .h2-ds-about{
     position:relative;
@@ -179,11 +191,11 @@ section {
   }
   
   .prog-bar::-webkit-progress-value {
-    background-color: #fad20c;
+    background-color: var(--primary-color);
   }
   
   .prog-bar::-moz-progress-bar {
-    background-color: #fad20c;
+    background-color: var(--primary-color);
   }
 
   .h-timeline {

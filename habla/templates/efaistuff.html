@@ -1,8 +1,0 @@
-{% extends "base/base.html" %}
-{% block template %}
-<div class="widgets-container">
-    {% include "components/square_widget.html" with title="City" content=homeview_data.city %} 
-    {% include "components/square_widget.html" with title="Temperature" content=homeview_data.temperature icon=homeview_data.weatherIcon%} 
-    {% include "components/square_widget.html" with title="Humidity" content=homeview_data.humidity %} 
-</div>
-{% endblock %}
