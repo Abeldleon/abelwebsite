@@ -352,8 +352,8 @@ button[type="submit"] {
   height: 80%;
   top: 2em;
   z-index: 0;
-  mix-blend-mode: difference;
-  -webkit-mix-blend-mode: difference;
+  background-blend-mode: difference;
+  -webkit-background-blend-mode: difference;
 }
 .proj-name{
   margin: 0;
